@@ -1,18 +1,10 @@
 import os
 import openai
 
-openai.api_key = 'my-api-key'
+openai.api_key = 'my_api_key'
 
-prompt = input('Pergunta: ')
-
-completion = openai.ChatCompletion.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {
-        "role": "user", 
-        "content": prompt
-    }
-  ]
+openai.Image.create(
+  prompt="A cute baby sea otter",
+  n=2,
+  size="1024x1024"
 )
-
-print(completion.choices[0].message.content)
