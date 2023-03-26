@@ -1,6 +1,6 @@
 import requests
 
-api_key =  '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'
+api_key =  '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'
 endpoint = 'https://api.openai.com/v1/completions'
 
 search = input('Pergunta: ')
