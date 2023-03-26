@@ -1,25 +1,18 @@
-import requests
+import openai
 
-api_key =  ''
-endpoint = 'https://api.openai.com/v1/completions'
+# Define a chave da API OpenAI
+openai.api_key = "my-api-key"
 
-search = input('Pergunta: ')
-model = 'text-davinci-003'
 
-data = {
-    'prompt': search,
-    'model': model,
-    'temperature': 0,
-    'max_tokens': 2048    
-}
+# Define o prompt de entrada
+prompt = input('Pergunta: ')
 
-response = requests.post(endpoint, json=data, headers={
-    'Content-Type': 'application/json',
-    'Authorization': f'Bearer {api_key}'
-})
+# Define as configurações de solicitação
+completion = openai.Completion.create(
+    prompt=prompt,
+    max_tokens=1000,
+    model="text-davinci-003"
+)
 
-if response.ok:
-    resposta = response.json()['choices'][0]['text']
-    print(resposta)
-else:
-    print(f"Erro na solicitação: {response.text}")
+# Imprime a resposta do modelo
+print(completion.choices[0].text)
